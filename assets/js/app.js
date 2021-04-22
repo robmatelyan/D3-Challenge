@@ -48,14 +48,13 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .call(leftAxis);
 
     // add plots
-    svg.append("g")
-        .append("dot")
-        .selectAll("dot")
+    var circlesGroup = chartGroup.selectAll("circle")
         .data(healthData)
         .enter()
         .append("circle")
-        .attr("cx", function(d) { return xScale})
-        .attr("cy", function(d) { return yScale})
+        .selectAll("circle")
+        .attr("cx", d => xScale(d.poverty))
+        .attr("cy", d => yScale(d.healthcareLow))
         .attr("r", 1.5)
         .style("fill", "#69b3a2")
 });
