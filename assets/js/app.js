@@ -52,9 +52,16 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .data(healthData)
         .enter()
         .append("circle")
-        .selectAll("circle")
         .attr("cx", d => xScale(d.poverty))
         .attr("cy", d => yScale(d.healthcareLow))
-        .attr("r", 1.5)
-        .style("fill", "#69b3a2")
+        .attr("r", 7)
+        .style("fill", "blue")
+        .attr("opacity", ".5")
+    
+    circlesGroup.append("text")
+        .text(function(d) {
+            return d.abbr
+            console.log(d.abbr)
+        })
+        .attr()
 });
