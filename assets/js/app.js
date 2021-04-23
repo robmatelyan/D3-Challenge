@@ -47,6 +47,22 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .classed("blue", true)
         .call(leftAxis);
 
+    // create axis titles
+    chartGroup.append("text")
+        .attr("transform", `translate(${width/ 2}, ${height + margin.top + 20})`)
+        .classed("poverty text", true)
+        .text("In Poverty (%)")
+
+    chartGroup.append("text")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("yScale", -margin.left+ 50)
+        .attr("xScale", -(height/2))
+        .attr("dy", "1em")
+        .classed("healthcare text", true)
+        .text("Lacks Healthcare (%)")
+
+
     // add plots
     var circlesGroup = chartGroup.selectAll("circle")
         .data(healthData)
@@ -57,11 +73,10 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .attr("r", 7)
         .style("fill", "blue")
         .attr("opacity", ".5")
-    
+
+ 
     circlesGroup.append("text")
         .text(function(d) {
             return d.abbr
-            console.log(d.abbr)
         })
-        .attr()
 });
