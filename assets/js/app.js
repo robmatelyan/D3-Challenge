@@ -8,7 +8,7 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 var svg = d3
-    .select("body")
+    .select("#scatter")
     .append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);
@@ -56,9 +56,9 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     chartGroup.append("text")
         .attr("text-anchor", "end")
         .attr("transform", "rotate(-90)")
-        .attr("yScale", -margin.left+ 50)
-        .attr("xScale", -(height/2))
-        .attr("dy", "1em")
+        .attr("yScale", -50)
+        .attr("xScale", 0 - (height / 2))
+        .attr("dy", "-2em")
         .classed("healthcare text", true)
         .text("Lacks Healthcare (%)")
 
